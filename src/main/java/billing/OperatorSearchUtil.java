@@ -87,7 +87,7 @@ public final class OperatorSearchUtil {
   private static void findPartialMatchingPrefix(Map<Long,PrefixDetail> cheapestOperatorMap, Long prefix, Double price, String operator) {
     Long prefixOriginal = prefix;
     boolean foundMatch = false;
-    while (broadenPrefixPossible(prefix)) {
+    while (broadenPrefixPossible(prefix, 1)) {
       prefix = prefix / 10;
       if (cheapestOperatorMap.containsKey(prefix)) {
         PrefixDetail prefixDetail = cheapestOperatorMap.get(prefix);
@@ -108,7 +108,7 @@ public final class OperatorSearchUtil {
   private static void findPartialMatchingPrefixInOperatorPrices(Map<Long,PrefixDetail> cheapestOperatorMap, Map<Long,Double> operatorPrices, String operator) {
     for (Long prefix: cheapestOperatorMap.keySet()) {
       Long prefixOriginal = prefix;
-      while(broadenPrefixPossible(prefix)) {
+      while(broadenPrefixPossible(prefix, 1)) {
         prefix = prefix / 10;
         if (operatorPrices.containsKey(prefix)) {
           PrefixDetail prefixDetail = cheapestOperatorMap.get(prefixOriginal);
@@ -123,9 +123,9 @@ public final class OperatorSearchUtil {
     }
   }
 
-  private static boolean broadenPrefixPossible(Object prefix) {
+  private static boolean broadenPrefixPossible(Object prefix, Integer length) {
     String prefixString = String.valueOf(prefix);
-    return prefixString.length() > 1;
+    return prefixString.length() > length;
   }
 
   public static String findCheapestOperator(Map<Long, PrefixDetail> cheapestOperatorMap, String phoneNumberStr){
@@ -133,7 +133,7 @@ public final class OperatorSearchUtil {
     phoneNumberStr = phoneNumberStr.replaceAll("\\-", "");
     phoneNumberStr = phoneNumberStr.replaceAll("\\s+", "");
     Long phoneNumberPrefix = Long.parseLong(phoneNumberStr.trim());
-    while (broadenPrefixPossible(phoneNumberPrefix)) {
+    while (broadenPrefixPossible(phoneNumberPrefix, 0)) {
       if (cheapestOperatorMap.containsKey(phoneNumberPrefix)) {
         return cheapestOperatorMap.get(phoneNumberPrefix).getOperator();
       }

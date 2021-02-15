@@ -47,7 +47,8 @@ public class TestOperatorSearchUtil {
     chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "+-4-6-7-3-73-123-456-");
     assertEquals("Operator A:", chepestOperatorForPrefix);
 
-
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "132456");
+    assertEquals("Operator A:", chepestOperatorForPrefix);
 
 
 
