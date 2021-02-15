@@ -38,6 +38,17 @@ public class TestOperatorSearchUtil {
     chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "26873-123456");
     assertEquals("Operator A:", chepestOperatorForPrefix);
 
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "26-873-123-456");
+    assertEquals("Operator A:", chepestOperatorForPrefix);
+
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "+46-2073-123-456");
+    assertEquals("Operator A:", chepestOperatorForPrefix);
+
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "+-4-6-7-3-73-123-456-");
+    assertEquals("Operator A:", chepestOperatorForPrefix);
+
+
+
 
 
   }
