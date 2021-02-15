@@ -21,6 +21,24 @@ public class TestOperatorSearchUtil {
     assertEquals("Operator B:", chepestOperatorForPrefix);
 
     chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "467123456");
+    assertEquals("Operator A:", chepestOperatorForPrefix);
+
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "463123456");
+    assertEquals("Operator A:", chepestOperatorForPrefix);
+
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "913123456");
     assertEquals("Operator B:", chepestOperatorForPrefix);
+
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "+46-73-212345");
+    assertEquals("Operator B:", chepestOperatorForPrefix);
+
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "4873-123456");
+    assertEquals("Operator B:", chepestOperatorForPrefix);
+
+    chepestOperatorForPrefix = OperatorSearchUtil.findCheapestOperator(cheapestOperatorMap, "26873-123456");
+    assertEquals("Operator A:", chepestOperatorForPrefix);
+
+
+
   }
 }
